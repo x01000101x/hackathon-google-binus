@@ -177,7 +177,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container" style={{ position: 'relative', overflowX: 'hidden', minHeight: '100vh' }}>
       <div className="glow-orb orb-1"></div>
       <div className="glow-orb orb-2"></div>
 
@@ -205,8 +205,8 @@ function App() {
             <section className="focus-banner">
               <div className="corner-bracket tl"></div><div className="corner-bracket tr"></div>
               <div className="corner-bracket bl"></div><div className="corner-bracket br"></div>
-              <p className="subtitle">METRICS OVERVIEW MATRIX</p>
-              <h2>Panel Utama Kendali UMKM. Data arus kas, kepadatan gudang, dan pergerakan tren pasar disinkronkan secara *real-time*.</h2>
+              <p className="subtitle text-center">METRICS OVERVIEW MATRIX</p>
+              <h2 className="neon subtitle text-center">Panel Utama Kendali UMKM. Data arus kas, kepadatan gudang, dan pergerakan tren pasar disinkronkan secara *real-time*.</h2>
             </section>
 
             <div className="cyber-panel full-width-panel" style={{marginBottom: '20px'}}>
