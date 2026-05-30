@@ -1,0 +1,444 @@
+/* =========================================
+   BASE CYBERPUNK STYLING (DARI STEP 1)
+   ========================================= */
+
+:root {
+  --bg-dark: #060913;
+  --panel-bg: rgba(13, 20, 38, 0.65);
+  --neon-cyan: #00f0ff;
+  --neon-green: #39ff14;
+  --neon-amber: #ffaa00;
+  --neon-red: #ff0055;
+  --text-main: #e2e8f0;
+  --text-muted: #64748b;
+  --border-color: rgba(0, 240, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  letter-spacing: 0.5px;
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 40px 60px;
+  position: relative;
+}
+
+/* Background Ambient Orbs */
+.glow-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(150px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.1;
+}
+.orb-1 { top: -100px; left: -50px; background: var(--neon-cyan); }
+.orb-2 { bottom: -100px; right: -50px; background: var(--neon-red); }
+
+/* Header Component */
+.cyber-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 35px;
+}
+.brand h1 {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #fff;
+}
+.brand h1 span { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,0.4); }
+.cyber-badge {
+  font-size: 9px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-family: monospace;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.system-status {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  margin-right: 6px;
+  box-shadow: 0 0 8px var(--neon-green);
+  animation: pulse 2s infinite;
+}
+
+/* Goal Focus Banner */
+.focus-banner {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 240, 255, 0.02);
+  border: 1px solid rgba(0, 240, 255, 0.08);
+  padding: 25px 35px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(10px);
+}
+.focus-banner .subtitle {
+  color: var(--neon-cyan);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.focus-banner h2 {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+/* Sci-fi Deco Corners */
+.corner-bracket { position: absolute; width: 10px; height: 10px; border-color: var(--neon-cyan); border-style: solid; opacity: 0.5; }
+.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+/* Panels and Tables */
+.cyber-panel { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.03); padding: 20px; }
+.cyber-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.cyber-table th { color: var(--text-muted); font-size: 11px; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.cyber-table td { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.02); }
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.5); }
+  70% { box-shadow: 0 0 0 5px rgba(57, 255, 20, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+}
+
+/* =========================================
+   FITUR BARU: MODUL NAVIGASI & FORM CYBERPUNK
+   ========================================= */
+
+.single-column {
+  grid-template-columns: 1fr;
+}
+
+.system-nav {
+  display: flex;
+  gap: 15px;
+}
+.system-nav button {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: monospace;
+  font-size: 14px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+.system-nav button:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+.system-nav button.active {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(0,240,255,0.6);
+  font-weight: bold;
+}
+
+.module-container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 25px;
+}
+
+@media (max-width: 1024px) {
+  .module-container { grid-template-columns: 1fr; }
+  .system-nav { position: relative; left: 0; transform: none; margin-top: 20px; width: 100%; justify-content: center;}
+  .cyber-header { flex-direction: column; }
+}
+
+.neon-title {
+  color: var(--neon-cyan);
+  font-size: 12px;
+  font-family: monospace;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  padding-bottom: 10px;
+}
+
+/* Form Styling */
+.cyber-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.grid-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.col-span-2 {
+  grid-column: span 2;
+}
+
+.cyber-input {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--neon-cyan);
+  padding: 12px 15px;
+  font-family: monospace;
+  font-size: 13px;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.3s;
+  width: 100%;
+}
+.cyber-input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.15) inset;
+  background: rgba(0, 240, 255, 0.02);
+}
+.cyber-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+select.cyber-input option {
+  background: var(--bg-dark);
+  color: var(--neon-cyan);
+}
+
+.cyber-btn {
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 14px;
+  font-family: monospace;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+.cyber-btn:hover {
+  background: var(--neon-cyan);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* Utility Text Colors & Tags */
+.text-muted { color: var(--text-muted); font-family: monospace; font-size: 12px;}
+.text-green { color: var(--neon-green); font-weight: bold; }
+.text-red { color: var(--neon-red); font-weight: bold; }
+.text-cyan { color: var(--neon-cyan); font-weight: bold; }
+.font-mono { font-family: monospace; }
+.text-center { text-align: center; }
+
+.status-tag { font-size: 10px; padding: 2px 6px; font-family: monospace; border-radius: 3px; }
+.badge-optimal { color: var(--neon-green); background: rgba(57, 255, 20, 0.1); border: 1px solid var(--neon-green); }
+.badge-critical { color: var(--neon-red); background: rgba(255, 0, 85, 0.1); border: 1px solid var(--neon-red); }
+
+/* =========================================
+   FITUR BARU: AI MARKETING GENERATOR
+   ========================================= */
+
+.textarea-input {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.ai-btn {
+  background: rgba(57, 255, 20, 0.1);
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+}
+.ai-btn:hover:not(:disabled) {
+  background: var(--neon-green);
+  box-shadow: 0 0 15px var(--neon-green);
+}
+.ai-btn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+}
+
+.ai-terminal {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--neon-green);
+  padding: 20px;
+  color: var(--neon-green);
+  font-family: monospace;
+  font-size: 14px;
+  min-height: 200px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 15px rgba(57, 255, 20, 0.05);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.blinking-text {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-text {
+  white-space: pre-wrap;
+  animation: typing 0.5s ease-out;
+}
+
+@keyframes typing {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.copy-btn {
+  width: 100%;
+  font-size: 12px;
+  padding: 10px;
+}
+
+/* =========================================
+   FITUR BARU: TOMBOL AKSI CRUD (EDIT & DELETE)
+   ========================================= */
+
+.table-action-btn {
+  background: transparent;
+  border: none;
+  font-family: monospace;
+  font-size: 11px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.edit-txt {
+  color: var(--neon-amber);
+}
+.edit-txt:hover {
+  text-shadow: 0 0 8px var(--neon-amber);
+  color: #fff;
+}
+
+.delete-txt {
+  color: var(--neon-red);
+}
+.delete-txt:hover {
+  text-shadow: 0 0 8px var(--neon-red);
+  color: #fff;
+}
+
+.warn-btn {
+  background: rgba(255, 170, 0, 0.1) !important;
+  border-color: var(--neon-amber) !important;
+  color: var(--neon-amber) !important;
+}
+.warn-btn:hover {
+  background: var(--neon-amber) !important;
+  color: #000 !important;
+  box-shadow: 0 0 15px var(--neon-amber) !important;
+}
+
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--text-muted) !important;
+  color: var(--text-main) !important;
+  font-size: 11px;
+  padding: 8px !important;
+}
+.cancel-btn:hover {
+  background: #cbd5e1 !important;
+  color: #000 !important;
+}
+
+/* =========================================
+   FITUR BARU: CHART DASHBOARD SYSTEM
+   ========================================= */
+
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.chart-panel {
+  min-height: 380px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  position: relative;
+  width: 100%; 
+}
+
+/* Membatasi tinggi doughnut chart agar seimbang */
+.doughnut-wrapper canvas {
+  max-height: 250px !important;
+  max-width: 250px !important;
+}
+
+.placeholder-chart-text {
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border: 1px dashed rgba(0, 240, 255, 0.2);
+  padding: 40px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Styling Modul Tren */
+.full-width-panel {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.full-width-panel .chart-wrapper canvas {
+  max-height: 320px !important; 
+}
